@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * throwing of two dice. If the value of the dice thrown is <6 then the player wins €1, otherwise
  * they loose €1. The game continues until the value of their pot = goal, or they lose all of their
  * money. After each game the player should be asked if they would like to play again. If they do,
- * then they should be asked once again for their starting pot and goal. For more information see:
+ * then they should bie asked once agan for their starting pot and goal. For more information see:
  * https://en.wikipedia.org/wiki/Gambler%27s_ruin
  */
 public class Gambler {
@@ -38,6 +38,23 @@ public class Gambler {
       // Game logic
       while (pot > 0 && pot < goal) {
         // TO DO - Implement game logic
+        int diceThrow = simulateThrow();
+
+        if(diceThrow<6)
+        {
+          pot++;
+          winningThrows++;
+        }
+        else {
+          pot--;
+        }
+
+        bets++;
+
+        System.out.println("You rolled a " + diceThrow);
+        System.out.println("Pot: " + pot);
+        System.out.println("Press any key to roll again.");
+        scan.nextLine();
 
       }
       if (pot == goal) {
